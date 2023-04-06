@@ -9,7 +9,7 @@ import Modal from "./components/modal/Modal";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Slide } from 'react-toastify';
-import {CanvasChart, SomeChart} from "./components/SomeChart";
+import { CanvasChart, SomeChart } from "./components/SomeChart";
 
 
 function App() {
@@ -485,7 +485,7 @@ function App() {
       setAutoPayoutMultiplier(text)
     }
   };
-  
+
   // Define Toasts
   const loginToast = () => {
     toast.success('Login Successful', {
@@ -545,7 +545,6 @@ function App() {
 
   // Chart Data
   const sendToChart = () => {
-    // console.log("1111: ", timeCount_xaxis.current, multiplierCount.current);
     setChartData({
       labels: timeCount_xaxis.current,
 
@@ -640,7 +639,7 @@ function App() {
     }
     );
   }
-  
+
   //JSX
   return (
 
@@ -710,7 +709,7 @@ function App() {
 
       <nav className="navbar">
         <div className="container">
-          <span className="logo">Crash Gambling Simulator</span>
+          {/* <span className="logo">Crash Gambling Simulator</span> */}
           <ul className="nav">
 
             {(userData && userData !== "No User Authentication") ? (
@@ -751,23 +750,23 @@ function App() {
 
           {<div className="effects-box">
             <div className="basically-the-graph" style={{ height: '90%', width: '90%', position: "absolute", top: '12%' }}>
-              {chartData ? (<CanvasChart chartData={chartData} chartOptions={chartOptions} />) : ('')}
+              {chartData ? (<CanvasChart chartData={chartData} chartOptions={chartOptions} bBettingPhase={!liveMultiplierSwitch && liveMultiplier !== 'Starting...' && liveMultiplier !== 'CONNECTING...' ? 1 : 0} />) : ('')}
             </div>
-            <div style={{ position: "absolute", zIndex: 12, top: '40%' }}>
+            <div style={{ position: "absolute", zIndex: 12, top: '44%' }}>
               {(() => {
                 if (bBettingPhase) {
                   return <h1>{bettingPhaseTime}</h1>
                 } else {
-
                   return <h1 className={` ${!liveMultiplierSwitch && liveMultiplier !== 'Starting...' && liveMultiplier !== 'CONNECTING...' ? ("multipler_crash_value_message") : ("")}`}>{liveMultiplier !== "Starting..." ? (liveMultiplier + 'x') : ('Starting...')}</h1>
                 }
               })()}
             </div>
+            {/* <div className="title">
+              Crash
+            </div> */}
           </div>}
         </div>
-        <div className="title">
-          Crash
-        </div>
+
         {/* <div className="grid-elements">
           {(userData && userData !== "No User Authentication") ? (
             <div>

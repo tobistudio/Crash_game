@@ -5,7 +5,7 @@ function Modal(props) {
 
     const modalRef = useRef()
     const closeModal = e => {
-        if (modalRef.current == e.target) {
+        if (modalRef.current === e.target) {
             props.setTrigger(false)
         }
     }
